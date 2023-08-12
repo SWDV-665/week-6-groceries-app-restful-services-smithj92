@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Groceries
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sample</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content color="light">
+
+  <h3 *ngIf="items.length === 0" style="text-align: center;">
+    Press Add below to get started!
+  </h3>  
+
+  <ion-list [inset]="true">
+    <ion-item-sliding *ngFor="let item of items; let i = index">
+      <ion-item>
+        <h2>{{item.name}}  --  {{item.quantity}}</h2>
+      </ion-item>
+      <ion-item-options>
+        <ion-button (click)="editItem(item, i)" color="primary" fill="clear">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+          Edit
+        </ion-button>
+        <ion-button (click)="shareItem(item, i)" color="tertiary" fill="clear">
+          <ion-icon slot="icon-only" name="share-outline"></ion-icon>
+          Share
+        </ion-button>
+        <ion-button (click)="removeItem(item, i)" color="secondary" fill="clear">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+          Delete
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" edge>
+    <ion-fab-button (click)="addItem()" size="small">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
+
+</ion-content>
+
